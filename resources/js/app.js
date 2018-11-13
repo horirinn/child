@@ -5,9 +5,16 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+Vue.use(VueRouter);
+
+Vue.prototype.$http = axios;
 
 /**
  * The following block of code may be used to automatically register your
@@ -17,7 +24,16 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('navbar', require('./components/Navbar.vue'));
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        { path: '/', component: require('./components/Child/Index.vue')},
+        { path: '/about', component: require('./components/About.vue')}
+    ]
+});
+
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -31,6 +47,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ 
+
+
+
 const app = new Vue({
+    router,
     el: '#app'
 });
