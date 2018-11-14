@@ -1,5 +1,5 @@
 <template>
     <div>
-        This page describe who we are.
+        頑張ろう
     </div>
 </template>
