@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\child;
-use Illuminate\Support\Facades\Request;
 
 class ChildController extends Controller
 {

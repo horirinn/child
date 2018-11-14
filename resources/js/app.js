@@ -7,12 +7,16 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Element from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import ja from 'element-ui/lib/locale/lang/ja';
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
 Vue.use(VueRouter);
+Vue.use(Element, {locale: ja});
 
 Vue.prototype.$http = axios;
 

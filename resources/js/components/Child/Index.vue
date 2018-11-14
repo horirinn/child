@@ -1,21 +1,22 @@
 <template>
-    <div>
-        <div v-for="child in children" :key="child.id">
-            <p>{{ child.lastName }}</p>
-            <p>{{ child.firstName }}</p>
-            <p>{{ child.sex }}</p>
-            <p>{{ child.motherLastName }}</p>
-            <p>{{ child.motherFirstName }}</p>
-            <p>{{ child.fatherLastName }}</p>
-            <p>{{ child.fatherFirstName }}</p>
-            <p>{{ child.height }}</p>
-            <p>{{ child.weight }}</p>
-            <p>{{ child.chestSize }}</p>
-            <p>{{ child.headSize }}</p>
-            <p>{{ child.hospital }}</p>
-            <p>{{ child.weather }}</p>
-        </div>
-    </div>
+    <el-table
+      :data="children"
+      style="width: 100%">
+        <el-table-column
+          prop="lastName"
+          label="姓"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="firstName"
+          label="名"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="sex"
+          label="性別">
+        </el-table-column>
+    </el-table>
 </template>
 
 <script>
@@ -31,6 +32,7 @@ export default {
   methods: {
     fetchChildren() {
       this.$http.get("/api/child").then(res => {
+        console.log(res.data);
         this.children = res.data;
       });
     }
