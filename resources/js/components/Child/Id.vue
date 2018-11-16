@@ -42,6 +42,7 @@
       <div>
         {{child.weather}}
       </div>
+      <el-button type="primary" icon="el-icon-edit" @click="editChild()"></el-button>
     </div>
 </template>
 
@@ -52,7 +53,8 @@ export default {
   },
   data() {
     return {
-      child: []
+      child: [],
+      editing: false,
     };
   },
   methods: {
@@ -64,6 +66,9 @@ export default {
       }).then(res => {
         this.child = res.data;
       });
+    },
+    editChild() {
+      this.editing = true;
     }
   }
 };
