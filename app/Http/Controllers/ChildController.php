@@ -6,10 +6,16 @@ use App\child;
 
 class ChildController extends Controller
 {
-    public function index()
+    public function all()
     {
         $children = child::all();
         return $children;
+    }
+
+    public function one(Request $request)
+    {
+        $child = child::find($request->input('id'));
+        return $child;
     }
 
     public function insert(Request $request)

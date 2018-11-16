@@ -34,6 +34,7 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         { path: '/', component: require('./components/Child/Index.vue')},
+        { path: '/child/:id', component: require('./components/Child/Id.vue')},
         { path: '/about', component: require('./components/About.vue')}
     ]
 });

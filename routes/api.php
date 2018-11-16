@@ -14,5 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'api'], function () {
-    Route::get('child', 'ChildController@index');
+    Route::get('child_all', 'ChildController@all');
+    Route::get('child_one', 'ChildController@one');
 });
