@@ -33,8 +33,9 @@ Vue.component('navbar', require('./components/Navbar.vue'));
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        { path: '/', component: require('./components/Child/Index.vue')},
+        { path: '/', component: require('./components/Child/List.vue')},
         { path: '/child/:id', component: require('./components/Child/Id.vue')},
+        { path: '/child/:id/edit', component: require('./components/Child/Edit.vue')},
         { path: '/about', component: require('./components/About.vue')}
     ]
 });

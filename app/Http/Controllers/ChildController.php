@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\child;
+use Illuminate\Support\Facades\Log;
 
 class ChildController extends Controller
 {
@@ -18,9 +19,11 @@ class ChildController extends Controller
         return $child;
     }
 
-    public function insert(Request $request)
+    public function update(Request $request)
     {
-        $child = new child;
-        $child->fill($request->all())->save();
+        $requestChild = $request->input('child');
+        $child = child::find($requestChild['id']);
+        $child->fill($requestChild)->save();
+        return $child;
     }
 }
