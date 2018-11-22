@@ -9,7 +9,6 @@ class ChildController extends Controller
 {
     public function all()
     {
-        Log::debug('message');
         $children = Child::all();
         return $children;
     }

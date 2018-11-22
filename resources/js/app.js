@@ -34,9 +34,10 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         { path: '/', component: require('./components/Child/List.vue')},
-        { path: '/child/:id', component: require('./components/Child/Id.vue')},
+        { path: '/child/:id', component: require('./components/Child/Show.vue')},
         { path: '/child/:id/edit', component: require('./components/Child/Edit.vue')},
-        { path: '/about', component: require('./components/About.vue')}
+        { path: '/about', component: require('./components/About.vue')},
+        { path: '/:id/suckle', component: require('./components/suckle/List.vue')},
     ]
 });
 
