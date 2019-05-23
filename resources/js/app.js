@@ -1,62 +1,72 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
+// vue
 import Vue from 'vue';
+
+// bootstrap.js
+require('./bootstrap');
+
+// polyfill
+import "@babel/polyfill";
+
+// windowに追加
+window.Vue = require('vue');
+
+// vue-router
 import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+// element-ui
 import Element from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import ja from 'element-ui/lib/locale/lang/ja';
+Vue.use(Element, {
+    locale: ja
+});
 
-require('./bootstrap');
-
-window.Vue = require('vue');
-
-Vue.use(VueRouter);
-Vue.use(Element, {locale: ja});
-
+// axios
 Vue.prototype.$http = axios;
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
+//navbar
 Vue.component('navbar', require('./components/Navbar.vue'));
+
+//vue-uuid導入
+import UUID from 'vue-uuid';
+Vue.use(UUID);
 
 const router = new VueRouter({
     mode: 'history',
-    routes: [
-        { path: '/', component: require('./components/Child/List.vue')},
-        { path: '/child/:id', component: require('./components/Child/Show.vue')},
-        { path: '/child/:id/edit', component: require('./components/Child/Edit.vue')},
-        { path: '/about', component: require('./components/About.vue')},
-        { path: '/:id/suckle', component: require('./components/suckle/List.vue')},
-    ]
+    routes: [{
+            path: '/',
+            component: require('./components/child/List.vue')
+        },
+        {
+            path: '/child/:id',
+            component: require('./components/child/Show.vue')
+        },
+        {
+            path: '/child/:id/edit',
+            component: require('./components/child/Edit.vue')
+        },
+        {
+            path: '/about',
+            component: require('./components/About.vue')
+        },
+        {
+            path: '/:id/suckle',
+            component: require('./components/suckle/List.vue')
+        },
+    ],
+    //ページ移動時にページを一番上に移動
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return {
+                x: 0,
+                y: 0
+            }
+        }
+    }
 });
-
-
-// const files = require.context('./', true, /\.vue$/i)
-
-// files.keys().map(key => {
-//     return Vue.component(_.last(key.split('/')).split('.')[0], files(key))
-// })
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
- 
-
-
 
 const app = new Vue({
     router,

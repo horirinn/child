@@ -1,5 +1,5 @@
 <template>
     <div>
-        頑張ろう
+        未記載
     </div>
 </template>
