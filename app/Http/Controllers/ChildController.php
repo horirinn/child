@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Child;
+use App\Models\Child;
 use Illuminate\Support\Facades\Log;
 
 class ChildController extends Controller

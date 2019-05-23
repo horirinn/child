@@ -1,32 +1,43 @@
 <template>
-    <div class="form-group row">
+    <back-ground>
         <label :for="uuid" class="label">{{label}}</label>
         <input
             :id="uuid"
-            class="form-control col-6"
+            class="text_input"
             :type="innerType"
             ref="textRef"
             :placeholder="placeHolder"
             v-model="innerValue"
             :disabled="disabled"
+            :step="step"
         >
-    </div>
+    </back-ground>
 </template>
 
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 .label {
-    
+    margin: 0 10px;
+    font-size: 15px;
+    color: #010079;
+    text-shadow: 0 0 5px white;
+    display: block;
+}
+.text_input {
+    margin: 0 20px;
+    font-size: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    background: none;
 }
 </style>
 
 <script>
-import AppLabel from "./atoms/AppLabel";
-
 export default {
-    components: {
-        AppLabel
-    },
     props: {
         label: {
             type: String
@@ -38,7 +49,8 @@ export default {
             type: Boolean,
             default: false
         },
-        vFocus: false
+        vFocus: false,
+        step: {}
     },
     data() {
         return {

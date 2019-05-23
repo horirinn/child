@@ -4,9 +4,6 @@ import Vue from 'vue';
 // bootstrap.js
 require('./bootstrap');
 
-// polyfill
-import "@babel/polyfill";
-
 // windowに追加
 window.Vue = require('vue');
 
@@ -25,12 +22,17 @@ Vue.use(Element, {
 // axios
 Vue.prototype.$http = axios;
 
-//navbar
-Vue.component('navbar', require('./components/Navbar.vue'));
-
 //vue-uuid導入
 import UUID from 'vue-uuid';
 Vue.use(UUID);
+
+//navbar
+Vue.component('navbar', require('./components/Navbar.vue'));
+Vue.component('BackGround', require('./components/app/BackGround.vue'));
+Vue.component('LabelAndCheckBox', require('./components/app/LabelAndCheckBox.vue'));
+Vue.component('LabelAndDate', require('./components/app/LabelAndDate.vue'));
+Vue.component('LabelAndValue', require('./components/app/LabelAndValue.vue'));
+Vue.component('TitleAndDetail', require('./components/app/TitleAndDetail.vue'));
 
 const router = new VueRouter({
     mode: 'history',
